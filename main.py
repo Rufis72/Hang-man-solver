@@ -57,8 +57,11 @@ while True:
     new_letter_guessing = get_most_common_letter(matching_words, ''.join([word_pattern_re.replace('.', ''), letters_not_in]))
     print(f'The best letter to guess is {new_letter_guessing}')
     new_pattern = input('''Please enter the new pattern.
-If that letter was the only letters left, quit python, or type '{}' to crash everything (probably).
+If that letter was the only letters left, quit python, or type "Robert '); DROP TABLE Students;".
 If that letter isn't there, type '):<'.\n''')
+    # checking if we should quit python
+    if new_pattern == 'Robert \'); DROP TABLE Students;':
+        raise Exception('Sanitize your data inputs!')
     if new_pattern == '):<':
         letters_not_in += new_letter_guessing
     else:
